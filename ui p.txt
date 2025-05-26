@@ -1,0 +1,76 @@
+tasks = []
+
+def add_task(task):
+    tasks.append(task)
+    print(f"Task '{task}' added.")
+
+def view_tasks():
+    if tasks:
+        print("Your tasks:")
+        for idx, task in enumerate(tasks, 1):
+            print(f"{idx}. {task}")
+    else:
+        print("No tasks to show.")
+
+def remove_task(task_number):
+    if 0 < task_number <= len(tasks):
+        removed_task = tasks.pop(task_number - 1)
+        print(f"Task '{removed_task}' removed.")
+    else:
+        print("Invalid task number.")
+
+def main():
+    while True:
+        print("\nOptions: 1. Add Task  2. View Tasks  3. Remove Task  4. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            task = input("Enter task: ")
+            add_task(task)
+        elif choice == '2':
+            view_tasks()
+        elif choice == '3':
+            try:
+                task_number = int(input("Enter task number to remove: "))
+                remove_task(task_number)
+            except ValueError:
+                print("Please enter a valid number.")
+        elif choice == '4':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+
+______________________________________________________________________________________________________________________________
+
+body {
+  font-family: sans-serif;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #f0f8ff;
+}
+.container {
+  background: white;
+  padding: 20px;
+  width: 800px;
+  border-radius: 5px;
+}
+input, button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px; 
+}
+button{
+        background-color: #5c6bc0;
+}
+.error {
+  color: red;
+  font-size: 0.8em;
+}
